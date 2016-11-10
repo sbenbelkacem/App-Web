@@ -28,7 +28,8 @@ function searchCity(_city)
 {
     console.log('searchCity','Hello from '+ _city);
     var request = new XMLHttpRequest ();
-    request.open ( 'GET' , 'http://api.openweathermap.org/data/2.5/weather?q='+_city+'&appid=fd0d0f5f343af1028fda61214f298ea7' +'&units=metric' , true );
+	
+    request.open ( 'GET' , 'https://demo.bilelz.fr/owmap/?q='+_city+'&appid=fd0d0f5f343af1028fda61214f298ea7' +'&units=metric' , true );
     request.onload = function () {
 		var resultHtml = '';
 		if ( request.status >= 200 && request.status < 400 ) {
@@ -37,7 +38,7 @@ function searchCity(_city)
 			resultHtml += '<h1>' + respObject["name"] + '</h1>';
 			var icon = "http://openweathermap.org/img/w/"+respObject["weather"][0]["icon"]+".png";
 			resultHtml += '<img src='+icon+' />';
-			resultHtml += '<p>' + respObject["main"]["temp"] + "°" + '</p>';
+			resultHtml += '<p>' + respObject["main"]["temp"] + "Â°" + '</p>';
 			resultHtml += '<p>' + respObject["weather"][0]["main"] + '</p>';
 			resultHtml += '<p>' + 'Humidity' + respObject["main"]["humidity"] + "%" + '</p>';
 			resultHtml += '<p>' + "Nuage" + respObject["clouds"]["all"] + "%" + '</p>';
